@@ -67,11 +67,7 @@ def addData():
     db.child("restaurants").child("markets").child("cookeville").child(combo.get()).update(data)
     
 config = {
-    "apiKey": "AIzaSyCBi1jp7sI4S3pVzaAAJHBIr3uEtClFlBA",
-    "authDomain": "nh-fd-app.firebaseapp.com",
-    "databaseURL": "https://nh-fd-app.firebaseio.com/",
-    "storageBucket": "gs://nh-fd-app.appspot.com/",
-    "serviceAccount": "nh-fd-app-firebase-adminsdk-z4uhd-db793e46d4.json" }
+     }
 
 firebase = pyrebase.initialize_app(config)
 auth = firebase.auth()
