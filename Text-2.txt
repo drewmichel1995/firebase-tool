@@ -1,0 +1,120 @@
+#frame = 
+window = Tk()
+#window.pack()
+window.title("Menu Entry")
+window.geometry("400x300")
+lbl = Label(window, text="Restaurant")
+txt = Entry(window, width=10)
+combo = Combobox(window)
+scrollbar = Scrollbar(window)
+scrollbar.pack(side=RIGHT, fill=Y)
+
+combo['values']= (name_list)
+combo.current(0) #set the selected item
+
+mylist = Listbox(window, yscrollcommand = scrollbar.set )
+
+for name in names.each():
+    for vals in name.val(): 
+        mylist.insert(END, vals)
+
+
+scrollbar.config( command = mylist.yview )
+
+i = 1
+for name in names.each():
+    for vals in name.val():
+        e = Entry(window)
+        e.grid(sticky=E)
+        entry[vals] = e
+
+        lb = Label(window, text=vals)
+        lb.grid(row=i, column=1)
+        label[vals] = lb
+        i += 1
+
+
+def clicked():
+    res = txt.get()
+    lbl.configure(text=res)
+    
+
+    
+
+#btn = Button(window, text="Add Data", command=clicked)
+
+#btn.grid(column=0, row=1)
+#lbl.grid(column=0,row=0)
+#txt.grid(column=1, row=1)
+#combo.pack()
+#mylist.pack()
+#txt.focus()
+
+
+
+class Restaurant(object):
+    averageRating = 0.0
+    description = ""
+    imageName = ""
+    locations = []
+    motto = ""
+    name = ""
+    partner = 'false'
+    
+class Locations(object):
+    address = ""
+    latitude = 0.0
+    longitude = 0.0
+    phone = ""
+
+def as_restaurant(d):
+    r = Restaurant()
+    r.__dict__.update(d)
+    return r
+    
+    
+jsonData = json.loads(all_restaurants.val(), object_hook=as_restaurant)
+
+
+    #print(combo.get())
+    for j in all_restaurants.each():
+        if j.key() == combo.get():
+            print(all_restaurants.val().get(j.key()).get("name"))
+            i = 0
+            
+            for name in all_restaurants.val().get(j.key()):
+                e = Entry(window)
+                e.grid(sticky=W)
+                e.insert(END, all_restaurants.val().get(j.key()).get(name))
+                entry[i] = e
+
+                lb = Label(window, text=name)
+                lb.grid(row=i+1, column=1)
+                label[i] = lb
+                i += 1
+            
+            #lbl1 = Label(window, text=all_restaurants.val().get(j.key()).key())
+            #lbl2 = Label(window, text=all_restaurants.val().get(j.key()).get("description"))
+            #lbl3 = Label(window, text=all_restaurants.val().get(j.key()).get("motto"))
+            #lbl4 = Label(window, text=all_restaurants.val().get(j.key()).get("partner"))
+            #lbl5 = Label(window, text=all_restaurants.val().get(j.key()).get("locations"))
+            #lbl6 = Label(window, text=all_restaurants.val().get(j.key()).get("imageName"))
+            #lbl7 = Label(window, text=all_restaurants.val().get(j.key()).get("averageRating"))
+            
+            #lbl1 = Label(window, text="name: ")
+            #lbl2 = Label(window, text="description: ")
+            #lbl3 = Label(window, text="motto: ")
+            #lbl4 = Label(window, text="partner: ")
+            #lbl5 = Label(window, text="locations: ")
+            #lbl6 = Label(window, text="imageName: ")
+            #lbl7 = Label(window, text="averageRating: ")
+            
+            #lbl1.grid(column=0, row=1)
+            #lbl2.grid(column=0, row=2)
+            #lbl3.grid(column=0, row=3)
+            #lbl4.grid(column=0, row=4)
+            #lbl5.grid(column=0, row=5)
+            #lbl6.grid(column=0, row=5)
+            #lbl7.grid(column=0, row=6)
+
+            #txt = Entry(window, width=10)
